@@ -85,7 +85,7 @@ async function createRoomAndStart() {
 }
 
 async function joinCall() {
-  const url = 'https://penrose21.daily.co/penrose21-test-session'
+  const url = 'https://tipnet.daily.co/sepry-test-stream'
   // const copyUrl = document.getElementById('copy-url');
   // copyUrl.value = url;
 
@@ -117,7 +117,7 @@ async function startStreaming(){
           max_cam_streams: 9,
       },
   })
-  callFrame.join({ url: "https://penrose21.daily.co/penrose21-test-session" });
+  callFrame.join({ url: "https://tipnet.daily.co/sepry-test-stream" });
 }
 
 function showEvent(e) {
