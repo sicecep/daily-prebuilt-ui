@@ -12,12 +12,12 @@ async function createCallframe() {
   callFrame = await window.DailyIframe.createFrame(callWrapper);
 
   callFrame
+    .on('joined-meeting', startStreaming)
     .on('loaded', showEvent)
     .on('started-camera', showEvent)
     .on('camera-error', showEvent)
     .on('joining-meeting', toggleLobby)
     // .on('joined-meeting', handleJoinedMeeting)
-    .on('joined-meeting', startStreaming)
     .on('left-meeting', handleLeftMeeting);
 }
 
@@ -107,9 +107,9 @@ async function joinCall() {
 }
 
 /* Event listener callbacks and helpers */
-async function startStreaming(){
-  await callFrame.startLiveStreaming({
-      rtmpUrl: 'rtmps://global-live.mux.com:443/app/269c69d5-b76f-8248-7e00-1e2cc93efc96',
+function startStreaming(){
+  callFrame.startLiveStreaming({
+      rtmpUrl: 'rtmp://global-live.mux.com:5222/app/269c69d5-b76f-8248-7e00-1e2cc93efc96',
       width: 1280,
       height: 720,
       layout: {
