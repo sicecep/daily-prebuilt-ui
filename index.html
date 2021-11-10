@@ -1,14 +1,14 @@
 <html>
   <head>
-    <title>Daily Prebuilt demo</title>
+    <title>Demo Session</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://unpkg.com/@daily-co/daily-js"></script>
-    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="icon" type="image/png" href="" />
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js"></script>
   </head>
   <body onload="createCallframe()">
-    <header class="header">
+    <!-- <header class="header">
       <div class="left-header">
         <img
           src="assets/daily_logo.svg"
@@ -16,53 +16,33 @@
           alt="Daily logo reads Daily"
         />
         <strong>
-          <p class="header-title">Daily Prebuilt demo</p>
+          <p class="header-title">Demo Session</p>
         </strong>
       </div>
-      <div class="right-header">
-        <a href="https://docs.daily.co/reference" target="_blank" class="link">
-          <button class="button docs-button white-button">
-            API docs
-            <img
-              class="arrow-icon"
-              src="/assets/new_tab_icon.png"
-              alt="Arrow icon points up and to the right"
-            />
-          </button>
-        </a>
-        <span class="divider"></span>
-        <a href="https://github.com/daily-demos/prebuilt-ui" target="_blank">
-          <img
-            class="octocat"
-            src="assets/github_logo.png"
-            alt="GitHub logo Octocat"
-          />
-        </a>
-      </div>
-    </header>
+    </header> -->
     <div class="container">
       <div id="wrapper" class="wrapper">
         <div id="start-container" class="start-container">
-          <h1 class="title">Daily Prebuilt demo</h1>
+          <h1 class="title">Multi Participant Demo</h1>
           <p class="prompt">
-            Start demo with a new unique room or paste in your own room URL.
+            Start demo with a new unique room
           </p>
-          <button
+          <!-- <button
             id="create-and-start"
             class="button start-button"
             onclick="createRoomAndStart()"
           >
             Create room and start
-          </button>
-          <p class="url-prompt">or</p>
-          <p
+          </button> -->
+          <!-- <p class="url-prompt">or</p> -->
+          <!-- <p
             id="url-click"
             class="url-prompt url-click show"
             onclick="showRoomInput()"
           >
             Enter my room URL
-          </p>
-          <div id="url-form" class="url-form hide">
+          </p> -->
+          <!-- <div id="url-form" class="url-form hide">
             <label for="url-input"></label>
             <input
               type="text"
@@ -77,9 +57,16 @@
               class="button start-button disabled-button"
               disabled
             >
-              Join room
+              Join Call
             </button>
-          </div>
+          </div> -->
+          <button
+              id="join-call"
+              onclick="joinCall()"
+              class="button start-button"
+            >
+              Join Call
+            </button>
         </div>
         <div id="error-message" class="hide">
           <h2 id="error-title" class="title error-title">Incorrect room URL</h2>
@@ -91,7 +78,7 @@
           </button>
         </div>
       </div>
-      <div id="call-controls-wrapper" class="call-controls-wrapper hide">
+      <!-- <div id="call-controls-wrapper" class="call-controls-wrapper hide">
         <div class="call-controls">
           <div class="controls-header">
             <h3>Call overview</h3>
@@ -212,7 +199,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

@@ -16,29 +16,9 @@ async function createCallframe() {
     .on('started-camera', showEvent)
     .on('camera-error', showEvent)
     .on('joining-meeting', toggleLobby)
-    .on('joined-meeting', handleJoinedMeeting)
+    // .on('joined-meeting', handleJoinedMeeting)
+    .on('joined-meeting', startStreaming)
     .on('left-meeting', handleLeftMeeting);
-
-  const roomURL = document.getElementById('url-input');
-  const joinButton = document.getElementById('join-call');
-  const createButton = document.getElementById('create-and-start');
-  roomURL.addEventListener('input', () => {
-    if (roomURL.checkValidity()) {
-      joinButton.classList.add('valid');
-      joinButton.classList.remove('disabled-button');
-      joinButton.removeAttribute('disabled');
-      createButton.classList.add('disabled-button');
-    } else {
-      joinButton.classList.remove('valid');
-    }
-  });
-
-  roomURL.addEventListener('keyup', (event) => {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      joinButton.click();
-    }
-  });
 }
 
 async function createRoom() {
@@ -48,7 +28,7 @@ async function createRoom() {
   // we'll add 30 min expiry (exp) so rooms won't linger too long on your account
   // we'll also turn on chat (enable_chat)
   // see other available options at https://docs.daily.co/reference#create-room
-  const exp = Math.round(Date.now() / 1000) + 60 * 30;
+  const exp = Math.round(Date.now() / 1000) + 60 * 60;
   const options = {
     properties: {
       exp: exp,
@@ -105,9 +85,9 @@ async function createRoomAndStart() {
 }
 
 async function joinCall() {
-  const url = document.getElementById('url-input').value;
-  const copyUrl = document.getElementById('copy-url');
-  copyUrl.value = url;
+  const url = 'https://penrose21.daily.co/penrose21-test-session'
+  // const copyUrl = document.getElementById('copy-url');
+  // copyUrl.value = url;
 
   try {
     await callFrame.join({
@@ -127,6 +107,19 @@ async function joinCall() {
 }
 
 /* Event listener callbacks and helpers */
+function startStreaming(){
+  callFrame.startLiveStreaming({
+      rtmpUrl: 'rtmp://global-live.mux.com:5222/app/269c69d5-b76f-8248-7e00-1e2cc93efc96',
+      width: 1280,
+      height: 720,
+      layout: {
+          preset: 'default',
+          max_cam_streams: 9,
+      },
+  })
+  callFrame.join({ url: "https://penrose21.daily.co/penrose21-test-session" });
+}
+
 function showEvent(e) {
   console.log('callFrame event', e);
 }
