@@ -108,7 +108,7 @@ async function joinCall() {
 
 /* Event listener callbacks and helpers */
 function startStreaming(){
-  callFrame.startLiveStreaming({
+  await callFrame.startLiveStreaming({
       rtmpUrl: 'rtmp://global-live.mux.com:5222/app/269c69d5-b76f-8248-7e00-1e2cc93efc96',
       width: 1280,
       height: 720,
